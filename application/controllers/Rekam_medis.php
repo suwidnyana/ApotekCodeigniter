@@ -9,9 +9,14 @@ class Rekam_medis extends CI_Controller {
 		'Model_pasien','Model_poliklinik','Model_dokter']);
         
 
-		if(count($this->session->userdata('user')) < 1) {
+		// if(count($this->session->userdata('user')) < 1) {
+		// redirect('login');
+		// }
+
+		if(empty($this->session->userdata('user')) > 0) 
+        {
 		redirect('login');
-		}
+        }
 	}
 
 	public function index($data = NULL)

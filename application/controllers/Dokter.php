@@ -8,9 +8,14 @@ class Dokter extends CI_Controller {
         $this->load->model('Model_dokter');
         
           
-        if(count($this->session->userdata('user')) < 1) {
+        // if(count($this->session->userdata('user')) < 1) {
+		// redirect('login');
+        // }
+        
+        if(empty($this->session->userdata('user')) > 0) 
+        {
 		redirect('login');
-		}
+        }
 	}
 
     public function index(){ 
@@ -48,7 +53,7 @@ class Dokter extends CI_Controller {
 
      public function add()
 	{
-		$dokter = $this->m_dokter; //objek model
+		$dokter = $this->Model_dokter; //objek model
 		$validation = $this->form_validation; //objek form validation
 		$validation->set_rules($dokter->rules()); //terapkan rules
 

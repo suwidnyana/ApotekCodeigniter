@@ -8,7 +8,12 @@ class Poliklinik extends CI_Controller {
         $this->load->model('Model_poliklinik');
         
         
-		if(count($this->session->userdata('user')) < 1) {
+		// if(count($this->session->userdata('user')) < 1) {
+		// redirect('login');
+        // }
+
+        if(empty($this->session->userdata('user')) > 0) 
+        {
 		redirect('login');
         }
         
@@ -74,7 +79,7 @@ class Poliklinik extends CI_Controller {
             return $data;
         }, $ids, array_keys($ids));
 
-        $this->m_poliklinik->bulk_edit($data);
+        $this->Model_poliklinik->bulk_edit($data);
         return redirect('poliklinik');
     }
    
@@ -94,7 +99,7 @@ class Poliklinik extends CI_Controller {
         $data['nama'] = $this->input->post('nama[]');   //parsing data ke fungsi array_keys di model
         $data['alamat'] = $this->input->post('alamat[]');
 
-        $this->m_poliklinik->add($data);
+        $this->Model_poliklinik->add($data);
         return redirect('poliklinik');
     }
 

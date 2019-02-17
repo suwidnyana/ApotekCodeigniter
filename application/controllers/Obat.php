@@ -7,9 +7,14 @@ class Obat extends CI_Controller {
         parent::__construct();
         $this->load->model('Model_obat');
        
-        if(count($this->session->userdata('user')) < 1) {
+        // if(count($this->session->userdata('user')) < 1) {
+		// redirect('login');
+        // }
+        
+        if(empty($this->session->userdata('user')) > 0) 
+        {
 		redirect('login');
-		}
+        }
 	}
 
 	public function index()
@@ -43,11 +48,11 @@ class Obat extends CI_Controller {
         {
             if(isset($_POST['add'])) {
                 $inputan = $this->input->post(null, TRUE);
-                $this->m_obat->add($inputan);
+                $this->Model_obat->add($inputan);
                 
             } else if(isset($_POST['edit'])) {
                 $inputan = $this->input->post(null, TRUE);
-                $this->m_obat->edit($inputan);
+                $this->Model_obat->edit($inputan);
             }
         redirect('obat/index');
         }

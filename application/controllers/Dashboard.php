@@ -12,6 +12,11 @@ class Dashboard extends CI_Controller {
 		// redirect('login');
 		// }
 
+		if(empty($this->session->userdata('user')) > 0) 
+        {
+		redirect('login');
+        }
+
 	}
 
 	public function index()
