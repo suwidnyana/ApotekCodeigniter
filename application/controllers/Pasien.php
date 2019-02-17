@@ -9,7 +9,7 @@ class Pasien extends CI_Controller {
         $this->load->library('form_validation');
 
         
-        if(count($this->session->userdata('user')) < 1) 
+        if(empty($this->session->userdata('user')) > 0) 
         {
 		redirect('login');
         }
@@ -49,7 +49,7 @@ class Pasien extends CI_Controller {
 
     public function edit($id_pasien =  NULL)
     {
-        $pasien = $this->m_pasien; //objek model
+        $pasien = $this->Model_pasien; //objek model
 		$validation = $this->form_validation; //objek form validation
 		$validation->set_rules($pasien->rules()); //terapkan rules
         
@@ -73,7 +73,7 @@ class Pasien extends CI_Controller {
     
     public function delete($id) 
     {
-        $this->m_pasien->del($id);
+        $this->Model_pasien->del($id);
         redirect('pasien');
     
     }

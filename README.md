@@ -1,2 +1,0 @@
-===Apotek Codeigniter==
-# ApotekCodeigniter
